@@ -21,7 +21,35 @@ const Home: NextPage = () => {
           </p>
         </div>
 
-        <div className="works"></div>
+        <div className={styles.works}>
+          <div className={styles.work}>
+          <div className={styles.work_container}>
+            <img src="/images/img1.png" alt="Work 1" />
+            <div className={styles.work_name}>
+              <p>Weddings</p>
+              <p>2021</p>
+            </div>
+          </div>
+          <div className={styles.work_container}>
+            <img src="/images/img1.png" alt="Work 1" />
+            <div className={styles.work_name}>
+              <p>Weddings</p>
+              <p>2021</p>
+            </div>
+          </div>
+          <div className={styles.work_container}>
+            <img src="/images/img1.png" alt="Work 1" />
+            <div className={styles.work_name}>
+              <p>Weddings</p>
+              <p>2021</p>
+            </div>
+          </div>
+          <div className={styles.work_container}>
+            <img src="/images/img1.png" alt="Work 1" />
+            <h2>jfsfisjf</h2>
+          </div>
+        </div>
+          </div>
       </section>
     </div>
   );

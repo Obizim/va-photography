@@ -1,11 +1,14 @@
 .main {
-  background: #000;
+  position: relative;
+  background-image: linear-gradient(#000 60%, #fff 40%);
   color: #fff;
-  height: 60vh;
   padding-top: 2rem;
   padding-left: 75px;
   display: grid;
   grid-template-columns: .4fr 1fr;
+}
+.contents {
+  display: block;
 }
 
 .title {
@@ -15,4 +18,31 @@
 
 .desc {
   margin: 1rem 0;
+}
+
+.works {
+  position: relative;
+}
+
+.work {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.work_container {
+  margin: 0 1rem;
+  color: #000;
+}
+
+.work_container img {
+  height: 620px;
+  object-fit: cover;
+}
+
+.work_name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 0;
 }
