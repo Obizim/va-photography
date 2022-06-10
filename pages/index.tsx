@@ -1,8 +1,28 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const data = [
+    {
+      title: "Wedding",
+      year: 2021,
+    },
+    {
+      title: "Wedding",
+      year: 2021,
+    },
+    {
+      title: "Wedding",
+      year: 2021,
+    },
+    {
+      title: "Wedding",
+      year: 2021,
+    },
+  ];
+
   return (
     <div>
       <Head>
@@ -21,44 +41,50 @@ const Home: NextPage = () => {
           </p>
 
           <div className={styles.arrows}>
-            <div className={styles.arrow_left}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" fill="#fff"/></svg>
+            <div className={styles.arrow_left} role="button" aria-label="Previous Arrow button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path
+                  d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z"
+                  fill="#fff"
+                />
+              </svg>
             </div>
-            <div className={styles.arrow_right}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="#fff"/></svg>
+            <div className={styles.arrow_right} role="button" aria-label="Next Arrow button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path
+                  d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                  fill="#fff"
+                />
+              </svg>
             </div>
           </div>
         </div>
 
         <div className={styles.works}>
-          <div className={styles.work}>
-          <div className={styles.work_container}>
-            <img src="/images/img1.png" alt="Work 1" />
-            <div className={styles.work_name}>
-              <p>Weddings</p>
-              <p>2021</p>
-            </div>
-          </div>
-          <div className={styles.work_container}>
-            <img src="/images/img1.png" alt="Work 1" />
-            <div className={styles.work_name}>
-              <p>Weddings</p>
-              <p>2021</p>
-            </div>
-          </div>
-          <div className={styles.work_container}>
-            <img src="/images/img1.png" alt="Work 1" />
-            <div className={styles.work_name}>
-              <p>Weddings</p>
-              <p>2021</p>
-            </div>
-          </div>
-          <div className={styles.work_container}>
-            <img src="/images/img1.png" alt="Work 1" />
-            <h2>jfsfisjf</h2>
-          </div>
+          {data.map((work, i) => (
+            <React.Fragment key={i}>
+              <div className={`slide-${i} ${styles.slide}`}>
+                <img src="/images/img1.png" alt={`Work`} />
+                <div className={styles.work_name}>
+                  <p>{work.title}</p>
+                  <p>{work.year}</p>
+                </div>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
-          </div>
       </section>
     </div>
   );
