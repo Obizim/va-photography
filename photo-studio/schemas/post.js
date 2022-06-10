@@ -43,6 +43,11 @@ export default {
       type: 'datetime',
     },
     {
+      name: 'yearCreated',
+      title: 'yearCreated',
+      type: 'number',
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'blockContent',

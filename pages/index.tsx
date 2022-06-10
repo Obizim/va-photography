@@ -1,28 +1,11 @@
 import type { NextPage } from "next";
+import {GetStaticProps} from 'next'
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { sanity } from "../sanityClient";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
-  const data = [
-    {
-      title: "Wedding",
-      year: 2021,
-    },
-    {
-      title: "Wedding",
-      year: 2021,
-    },
-    {
-      title: "Wedding",
-      year: 2021,
-    },
-    {
-      title: "Wedding",
-      year: 2021,
-    },
-  ];
-
+const Home: NextPage = ({ posts }) => {
   return (
     <div>
       <Head>
@@ -73,13 +56,13 @@ const Home: NextPage = () => {
         </div>
 
         <div className={styles.works}>
-          {data.map((work, i) => (
+          {posts.map((post, i) => (
             <React.Fragment key={i}>
               <div className={`slide-${i} ${styles.slide}`}>
-                <img src="/images/img1.png" alt={`Work`} />
+                <img src={post.mainImage.asset.url} alt={`Work`} />
                 <div className={styles.work_name}>
-                  <p>{work.title}</p>
-                  <p>{work.year}</p>
+                  <p>{post.title}</p>
+                  <p>{post.yearCreated}</p>
                 </div>
               </div>
             </React.Fragment>
@@ -91,3 +74,25 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const  posts  = await sanity.fetch(`*[_type == "post"]{
+    'slug': slug.current,
+    'title': title,
+    'yearCreated': yearCreated,
+    'mainImage': mainImage {
+      asset->{
+        _id, 
+        url
+      }
+    }
+  }`)
+  console.log(posts);
+  
+  return {
+    props: {
+      posts
+    }
+  }
+}
