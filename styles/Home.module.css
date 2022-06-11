@@ -41,7 +41,7 @@
   -ms-overflow-style: none;  /* IE 10+ */
 }
 
-.slide{
+.work_container{
   margin: 0 1rem;
   color: #000;
   scroll-snap-align: start;

@@ -1,11 +1,16 @@
 import type { NextPage } from "next";
-import {GetStaticProps} from 'next'
+import { GetStaticProps } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 import { sanity } from "../sanityClient";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = ({ posts }) => {
+interface IPosts {
+  posts: [];
+}
+
+const Home: NextPage<IPosts> = ({ posts }) => {
   return (
     <div>
       <Head>
@@ -24,7 +29,11 @@ const Home: NextPage = ({ posts }) => {
           </p>
 
           <div className={styles.arrows}>
-            <div className={styles.arrow_left} role="button" aria-label="Previous Arrow button">
+            <div
+              className={styles.arrow_left}
+              role="button"
+              aria-label="Previous Arrow button"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -38,7 +47,11 @@ const Home: NextPage = ({ posts }) => {
                 />
               </svg>
             </div>
-            <div className={styles.arrow_right} role="button" aria-label="Next Arrow button">
+            <div
+              className={styles.arrow_right}
+              role="button"
+              aria-label="Next Arrow button"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -56,16 +69,16 @@ const Home: NextPage = ({ posts }) => {
         </div>
 
         <div className={styles.works}>
-          {posts.map((post, i) => (
-            <React.Fragment key={i}>
-              <div className={`slide-${i} ${styles.slide}`}>
+          {posts.map((post: any, i) => (
+            <Link href={`/${post.slug}`} key={i}>
+              <a className={styles.work_container}>
                 <img src={post.mainImage.asset.url} alt={`Work`} />
                 <div className={styles.work_name}>
                   <p>{post.title}</p>
                   <p>{post.yearCreated}</p>
                 </div>
-              </div>
-            </React.Fragment>
+              </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -75,9 +88,8 @@ const Home: NextPage = ({ posts }) => {
 
 export default Home;
 
-
 export const getStaticProps: GetStaticProps = async (context) => {
-  const  posts  = await sanity.fetch(`*[_type == "post"]{
+  const posts = await sanity.fetch(`*[_type == "post"]{
     'slug': slug.current,
     'title': title,
     'yearCreated': yearCreated,
@@ -87,12 +99,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
         url
       }
     }
-  }`)
-  console.log(posts);
-  
+  }`);
+
   return {
     props: {
-      posts
-    }
-  }
-}
+      posts,
+    },
+  };
+};
