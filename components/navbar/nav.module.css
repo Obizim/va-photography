@@ -8,6 +8,10 @@
     padding: 2rem 0;
 }
 
+.logo {
+    cursor: pointer;
+}
+
 .nav_list li {
     margin: 0 2rem;
     cursor: pointer;

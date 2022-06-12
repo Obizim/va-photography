@@ -22,23 +22,9 @@
   margin: .5rem 0;
 }
 
-
-/* .works::-webkit-scrollbar { */
-  /* background: transparent;  */
-  /* Chrome/Safari/Webkit */
-  /* width: 0px; */
-/* } */
-    
-/* .works {
-  scrollbar-width: none;  */
-  /* Firefox */
-  /* -ms-overflow-style: none;   */
-  /* IE 10+ */
-/* } */
-
 .project_container {
   max-width: calc(100vw - 100px);
-  margin: 2rem auto;
+  margin: 3rem auto;
 }
 
 .project{
@@ -57,4 +43,11 @@
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
+}
+
+.project_contents {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
 }

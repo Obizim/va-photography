@@ -6,8 +6,8 @@ import React from "react";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import { sanity } from "../sanityClient";
 import styles from "../styles/Home.module.css";
-// import '@splidejs/react-splide/css';
 import "@splidejs/react-splide/css";
+import Image from "next/image";
 
 interface IPosts {
   posts: [];
@@ -17,6 +17,10 @@ const data = [
   {
     title: "Wedd",
     year: 2021,
+  },
+  {
+    title: "Wedd",
+    yearCreated: 2021,
   },
   {
     title: "Wedd",
@@ -66,7 +70,6 @@ const Home: NextPage<IPosts> = ({ posts }) => {
               width: "100vw",
               gap: "2rem",
               pagination: false,
-              // perPage: 4,
               perMove: 1,
               drag: true,
             }}
@@ -75,7 +78,7 @@ const Home: NextPage<IPosts> = ({ posts }) => {
               <SplideSlide className={styles.splide__slide}>
                 <Link href={`/${post.slug}`} key={i}>
                   <a className={styles.project}>
-                    <img src="/images/img1.png" alt={`Work`} />
+                    <Image src="/images/img1.png" alt={`Work`} width={348.33} height={300}></Image>
                     <div className={styles.project_contents}>
                       <p>{post.title}</p>
                       <p>{post.yearCreated}</p>
