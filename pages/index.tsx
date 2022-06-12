@@ -3,12 +3,38 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import { sanity } from "../sanityClient";
 import styles from "../styles/Home.module.css";
+// import '@splidejs/react-splide/css';
+import "@splidejs/react-splide/css";
 
 interface IPosts {
   posts: [];
 }
+
+const data = [
+  {
+    title: "Wedd",
+    year: 2021,
+  },
+  {
+    title: "Wedd",
+    yearCreated: 2021,
+  },
+  {
+    title: "Wedd",
+    yearCreated: 2021,
+  },
+  {
+    title: "Wedd",
+    yearCreated: 2021,
+  },
+  {
+    title: "Wedd",
+    yearCreated: 2021,
+  },
+];
 
 const Home: NextPage<IPosts> = ({ posts }) => {
   return (
@@ -20,90 +46,69 @@ const Home: NextPage<IPosts> = ({ posts }) => {
       </Head>
 
       <section className={styles.main}>
-        <div className={styles.contents}>
           <h1 className={styles.title}>
-            Victor <br /> Abiola <br /> Photographer
+            Victor Abiola <br /> Photographer Services
           </h1>
           <p className={styles.desc}>
             Event/Portrait photographer & film maker
           </p>
+      
+          <Link href="/contact">
+            <a className={styles.booking}>Book an event</a>
+          </Link>
+        </section>
 
-          <div className={styles.arrows}>
-            <div
-              className={styles.arrow_left}
-              role="button"
-              aria-label="Previous Arrow button"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-              >
-                <path fill="none" d="M0 0h24v24H0z" />
-                <path
-                  d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z"
-                  fill="#fff"
-                />
-              </svg>
-            </div>
-            <div
-              className={styles.arrow_right}
-              role="button"
-              aria-label="Next Arrow button"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-              >
-                <path fill="none" d="M0 0h24v24H0z" />
-                <path
-                  d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-                  fill="#fff"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
 
-        <div className={styles.works}>
-          {posts.map((post: any, i) => (
-            <Link href={`/${post.slug}`} key={i}>
-              <a className={styles.work_container}>
-                <img src={post.mainImage.asset.url} alt={`Work`} />
-                <div className={styles.work_name}>
-                  <p>{post.title}</p>
-                  <p>{post.yearCreated}</p>
-                </div>
-              </a>
-            </Link>
-          ))}
-        </div>
-      </section>
+        <section className={styles.project_container}>
+          <Splide
+            options={{
+              rewind: false,
+              width: "100vw",
+              gap: "2rem",
+              pagination: false,
+              // perPage: 4,
+              perMove: 1,
+              drag: true,
+            }}
+          >
+            {data.map((post: any, i) => (
+              <SplideSlide className={styles.splide__slide}>
+                <Link href={`/${post.slug}`} key={i}>
+                  <a className={styles.project}>
+                    <img src="/images/img1.png" alt={`Work`} />
+                    <div className={styles.project_contents}>
+                      <p>{post.title}</p>
+                      <p>{post.yearCreated}</p>
+                    </div>
+                  </a>
+                </Link>
+              </SplideSlide>
+            ))}
+          </Splide>
+        </section>
+
     </div>
   );
 };
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const posts = await sanity.fetch(`*[_type == "post"]{
-    'slug': slug.current,
-    'title': title,
-    'yearCreated': yearCreated,
-    'mainImage': mainImage {
-      asset->{
-        _id, 
-        url
-      }
-    }
-  }`);
+// export const getStaticProps: GetStaticProps = async (context) => {
+//   const posts = await sanity.fetch(`*[_type == "post"]{
+//     'slug': slug.current,
+//     'title': title,
+//     'yearCreated': yearCreated,
+//     'mainImage': mainImage {
+//       asset->{
+//         _id,
+//         url
+//       }
+//     }
+//   }`);
 
-  return {
-    props: {
-      posts,
-    },
-  };
-};
+//   return {
+//     props: {
+//       posts,
+//     },
+//   };
+// };

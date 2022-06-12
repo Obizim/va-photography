@@ -1,14 +1,10 @@
-.header {
-    background: rgba(0, 0, 0, 0.9);
-    color: #fff;
-}
 
 .nav {  
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: auto;
-    max-width: calc(100vw - 150px);
+    max-width: calc(100vw - 200px);
     padding: 2rem 0;
 }
 
