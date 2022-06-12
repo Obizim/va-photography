@@ -1,4 +1,30 @@
 .contact {
-    max-width: calc(100vw - 200px);
-    margin: 3rem auto;
+    max-width: 60rem;
+    margin: 5rem auto;
+    padding: 0 .9rem;
+}
+
+.title {
+    font-size: clamp(1rem, 5vw, 3rem);
+}
+
+.contact_content {
+    margin: 4rem 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact_content > * {
+    padding: 1rem 0;
+}
+
+.contact_content p {
+    font-size: 1rem;
+}
+
+.contact_content a {
+    color: rebeccapurple;
+    text-decoration: underline;
+    font-size: 2rem;
 }

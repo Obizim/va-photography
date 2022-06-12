@@ -11,12 +11,6 @@ export const Navbar = () => {
           <li>About</li>
           <Link href="/contact">Contact</Link>
         </ul>
-
-        <ul className={styles.nav_socials}>
-          <li>Tw</li>
-          <li>Fb</li>
-          <li>Li</li>
-        </ul>
       </nav>
     </header>
   );
