@@ -8,8 +8,8 @@ export const Navbar = () => {
         <Link href="/"><a className={styles.logo}><h1>V/A</h1></a></Link>
 
         <ul className={styles.nav_list}>
-          <li><Link href="/about">About</Link></li>
-          <li><Link href="/contact">Contact</Link></li>
+        <Link href="/about"><li>About</li></Link>
+        <Link href="/contact"><li>Contact</li></Link>
         </ul>
       </nav>
     </header>

@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import styles from "./about.module.css";
 
 const About: NextPage = () => {
   return (
@@ -34,7 +33,7 @@ const About: NextPage = () => {
         </p>
       </div>
 
-      <p>-Copied from a random interent page</p>
+      <p> - Copied from a random interent page</p>
     </section>
   );
 };
