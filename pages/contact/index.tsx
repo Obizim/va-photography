@@ -18,7 +18,7 @@ const Contact: NextPage = () => {
               <a href="mailto:victorabiola@gmail.com">victorabiola@gmail.com</a>
           </div>
           <div>
-              <p>Whataspp/Call</p>
+              <p>Twitter</p>
               <a href="https://twitter.com/zimway_" className="">@Vict0rr_</a>
           </div>
       </div>

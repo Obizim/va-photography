@@ -50,3 +50,14 @@
   justify-content: space-between;
   margin: .3rem 0;
 }
+
+/* POST DETAILS  */
+.post_details {
+    max-width: 60rem;
+    margin: 5rem auto;
+    padding: 0 .9rem;
+}
+
+.post_contents {
+  margin: 2rem 0;
+}

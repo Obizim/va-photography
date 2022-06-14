@@ -13,32 +13,32 @@ interface IPosts {
   posts: [];
 }
 
-const data = [
-  {
-    title: "Wedd",
-    year: 2021,
-  },
-  {
-    title: "Wedd",
-    yearCreated: 2021,
-  },
-  {
-    title: "Wedd",
-    yearCreated: 2021,
-  },
-  {
-    title: "Wedd",
-    yearCreated: 2021,
-  },
-  {
-    title: "Wedd",
-    yearCreated: 2021,
-  },
-  {
-    title: "Wedd",
-    yearCreated: 2021,
-  },
-];
+// const data = [
+//   {
+//     title: "Wedd",
+//     year: 2021,
+//   },
+//   {
+//     title: "Wedd",
+//     yearCreated: 2021,
+//   },
+//   {
+//     title: "Wedd",
+//     yearCreated: 2021,
+//   },
+//   {
+//     title: "Wedd",
+//     yearCreated: 2021,
+//   },
+//   {
+//     title: "Wedd",
+//     yearCreated: 2021,
+//   },
+//   {
+//     title: "Wedd",
+//     yearCreated: 2021,
+//   },
+// ];
 
 const Home: NextPage<IPosts> = ({ posts }) => {
   return (
@@ -74,9 +74,9 @@ const Home: NextPage<IPosts> = ({ posts }) => {
               drag: true,
             }}
           >
-            {data.map((post: any, i) => (
-              <SplideSlide className={styles.splide__slide}>
-                <Link href={`/${post.slug}`} key={i}>
+            {posts.map((post: any, index) => (
+              <SplideSlide className={styles.splide__slide} key={index}>
+                <Link href={`/${post.slug}`} key={index}>
                   <a className={styles.project}>
                     <Image src="/images/img1.png" alt={`Work`} width={348.33} height={300}></Image>
                     <div className={styles.project_contents}>
@@ -96,22 +96,22 @@ const Home: NextPage<IPosts> = ({ posts }) => {
 
 export default Home;
 
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   const posts = await sanity.fetch(`*[_type == "post"]{
-//     'slug': slug.current,
-//     'title': title,
-//     'yearCreated': yearCreated,
-//     'mainImage': mainImage {
-//       asset->{
-//         _id,
-//         url
-//       }
-//     }
-//   }`);
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await sanity.fetch(`*[_type == "post"]{
+    'slug': slug.current,
+    'title': title,
+    'yearCreated': yearCreated,
+    'mainImage': mainImage {
+      asset->{
+        _id,
+        url
+      }
+    }
+  }`);
 
-//   return {
-//     props: {
-//       posts,
-//     },
-//   };
-// };
+  return {
+    props: {
+      posts,
+    },
+  };
+};
