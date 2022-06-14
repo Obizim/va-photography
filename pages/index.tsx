@@ -32,7 +32,7 @@ const Home: NextPage<IPosts> = ({ posts }) => {
             Victor Abiola <br /> Photographer Services
           </h1>
           <p className={styles.desc}>
-            Event/Portrait photographer & film maker
+            Event/Portrait photographer and film maker
           </p>
       
           <Link href="/contact">
@@ -54,7 +54,7 @@ const Home: NextPage<IPosts> = ({ posts }) => {
               <SplideSlide className={styles.splide__slide} key={index}>
                 <Link href={`/${post.slug}`} key={index}>
                   <a className={styles.project}>
-                    <Image src={urlFor(post.mainImage).url()} alt={`Work`} width={348.33} height={300} objectFit="cover" />
+                    <Image src={urlFor(post.mainImage).url()} alt="Work" width={348.33} height={300} objectFit="cover" />
                     <div className={styles.project_contents}>
                       <p>{post.title}</p>
                       <p>{post.yearCreated}</p>

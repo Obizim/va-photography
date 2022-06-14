@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import styles from "../styles/Home.module.css";
 import React from "react";
+import Image from "next/image";
 interface Iprops {
   posts: {
     title: string;
@@ -25,10 +26,13 @@ const PortableTextComponents = {
         return null;
       }
       return (
-        <img
+        <Image
           alt={value.alt || "A randon work cover"}
           loading="lazy"
           src={urlFor(value).auto("format").url()}
+          width={250}
+          height={400}
+          objectFit="cover"
         />
       );
     },

@@ -5,7 +5,7 @@ const Contact: NextPage = () => {
   return (
     <section className={styles.contact}>
       <h1 className={styles.title}>
-        Need me to cover an event? <br /> Let's work together.{" "}
+        Need me to cover an event? <br /> Lets work together.
       </h1>
 
       <div className={styles.contact_content}>

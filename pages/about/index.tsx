@@ -9,7 +9,7 @@ const About: NextPage = () => {
           that he took once he became a photographer. He discovered the Yosemite
           and Sierra, Nevada and began taking photos with a Kodak No. 1 Box
           Brownie camera that his parents had given him. He joined the Sierra
-          Club in 1919. By 1922, his photographs were appearing in the club's
+          Club in 1919. By 1922, his photographs were appearing in the club
           bulletin. Ansel began giving tours through the club and took pictures
           of the people and places that they visited. It was on one of these
           trips that he took his famous photograph: Monolith, the Face of Half
