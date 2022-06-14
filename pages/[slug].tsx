@@ -10,7 +10,8 @@ import React from "react";
 interface Iprops {
    posts: {
       title: string,
-      body: any
+      body: any,
+      yearCreated: number
    }
 }
 
@@ -37,7 +38,7 @@ const PortableTextComponents = {
 
 const PostDetails: NextPage<Iprops> = ({posts}) => {
     return <section className={styles.post_details}>
-         <h1>{posts.title}</h1>
+         <h1>{posts.title} - {posts.yearCreated}</h1>
 
          <div className={styles.post_contents}>
             <PortableText value={posts.body} components={PortableTextComponents}  />
