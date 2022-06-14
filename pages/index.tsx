@@ -3,14 +3,19 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
-import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import imageUrlBuilder from '@sanity/image-url'
+import { Splide, SplideSlide} from "@splidejs/react-splide";
+import Image from "next/image";
 import { sanity } from "../sanityClient";
 import styles from "../styles/Home.module.css";
 import "@splidejs/react-splide/css";
-import Image from "next/image";
 
 interface IPosts {
   posts: [];
+}
+
+function urlFor (source: any) {
+  return imageUrlBuilder(sanity).image(source)
 }
 
 // const data = [
@@ -62,7 +67,6 @@ const Home: NextPage<IPosts> = ({ posts }) => {
           </Link>
         </section>
 
-
         <section className={styles.project_container}>
           <Splide
             options={{
@@ -72,13 +76,12 @@ const Home: NextPage<IPosts> = ({ posts }) => {
               pagination: false,
               perMove: 1,
               drag: true,
-            }}
-          >
-            {posts.map((post: any, index) => (
+            }}>
+            {posts && posts.map((post: any, index) => (
               <SplideSlide className={styles.splide__slide} key={index}>
                 <Link href={`/${post.slug}`} key={index}>
                   <a className={styles.project}>
-                    <Image src="/images/img1.png" alt={`Work`} width={348.33} height={300}></Image>
+                    <Image src={urlFor(post.mainImage).url()} alt={`Work`} width={348.33} height={300} objectFit="cover" />
                     <div className={styles.project_contents}>
                       <p>{post.title}</p>
                       <p>{post.yearCreated}</p>
@@ -109,9 +112,19 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   }`);
 
-  return {
-    props: {
-      posts,
-    },
-  };
+  if(!posts || !posts.length) {
+    return {
+      props: {
+        posts: []
+      },
+    }
+  }else {
+    return {
+      props: {
+        posts
+      },
+    };
+  }
+
+  
 };
