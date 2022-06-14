@@ -1,11 +1,15 @@
 import type { NextPage } from "next";
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { sanity } from "../sanityClient";
+import {PortableText} from '@portabletext/react'
 import styles from "../styles/Home.module.css";
+import React from "react";
+
 
 interface Iprops {
    posts: {
-      title: string
+      title: string,
+      body: any
    }
 }
 
@@ -15,7 +19,7 @@ const PostDetails: NextPage<Iprops> = ({posts}) => {
          <h1>{posts.title}</h1>
 
          <div className={styles.post_contents}>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam qui earum mollitia molestiae, ut dolore architecto tempora itaque sed autem!</p>
+            <PortableText value={posts.body} />
          </div>
          </section>
 }
