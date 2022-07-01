@@ -4,11 +4,9 @@ import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import imageUrlBuilder from '@sanity/image-url'
-import { Splide, SplideSlide} from "@splidejs/react-splide";
 import Image from "next/image";
 import { sanity } from "../sanityClient";
 import styles from "../styles/Home.module.css";
-import "@splidejs/react-splide/css";
 
 interface IPosts {
   posts: [];
@@ -29,43 +27,26 @@ const Home: NextPage<IPosts> = ({ posts }) => {
 
       <section className={styles.main}>
           <h1 className={styles.title}>
-            Victor Abiola <br /> Photographer Services
+            John Doe is a photographer and filmmaker based in Amsterdam, Netherlands
           </h1>
-          <p className={styles.desc}>
-            Event/Portrait photographer and film maker
-          </p>
-      
-          <Link href="/contact">
-            <a className={styles.booking}>Book an event</a>
-          </Link>
-        </section>
+        
 
         <section className={styles.project_container}>
-          <Splide
-            options={{
-              rewind: false,
-              width: "100vw",
-              gap: "2rem",
-              pagination: false,
-              perMove: 1,
-              drag: true,
-            }}>
             {posts && posts.map((post: any, index) => (
-              <SplideSlide className={styles.splide__slide} key={index}>
                 <Link href={`/${post.slug}`} key={index}>
                   <a className={styles.project}>
-                    <Image src={urlFor(post.mainImage).url()} alt="Work" width={348.33} height={300} objectFit="cover" />
+                    <div className={styles.projectImg_container}>
+                    <Image src={urlFor(post.mainImage).url()} alt="Work" width={450} height={350} objectFit="cover" className={styles.mainImage} />
+                    </div>
                     <div className={styles.project_contents}>
                       <p>{post.title}</p>
                       <p>{post.yearCreated}</p>
                     </div>
                   </a>
                 </Link>
-              </SplideSlide>
             ))}
-          </Splide>
         </section>
-
+        </section>
     </div>
   );
 };
