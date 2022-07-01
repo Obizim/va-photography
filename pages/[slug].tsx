@@ -6,6 +6,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import styles from "../styles/Home.module.css";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 interface Iprops {
   posts: {
     title: string;
@@ -42,7 +43,10 @@ const PortableTextComponents = {
 const PostDetails: NextPage<Iprops> = ({ posts }) => {
   return (
     <section className={styles.post_details}>
-      <h1>
+      <Link href="/">
+        <a className={styles.backlink}>go back</a>
+      </Link>
+      <h1 className={styles.details_title}>
         {posts.title} - {posts.yearCreated}
       </h1>
 
